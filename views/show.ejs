@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant Store</title>
+</head>
+<body>
+    <div class="title">
+    <nav>
+        <a href="/valo"><h1>Valorant Buddies</h1></a>
+    </nav>
+</div>
+    <div class="show">
+        <img src="<%=buds.img%>" alt="buds.name"><br>
+        <h3><%=buds.name%></h3> <br>
+        <h4><%=buds.description%></h4>
+        Price: <h4><%=buds.price%></h4> <br>
+        Quantity Remaining: <h4><%=buds.qty%></h4>
+
+        <!-- add to cart button -->
+        <form action="/valo/cart" method="POST">
+        <input type="hidden" name="id" value="<%=buds._id%>">
+        <input type="submit" value="Add Buddy to Cart">
+        </form>
+    </div>
+
+
+</body>
+</html>

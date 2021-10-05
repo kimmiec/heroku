@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant Store</title>
+</head>
+<body>
+    <div class="container">
+    <h1>Valorant Buddies</h1>
+</div>
+    <a href="/valo/cart">Cart</a>
+<div class="ul-con">
+    <ul>
+        <% buddies.forEach(charms => { %>
+        <li><a href="/valo/<%=charms._id; %>"><img src="<%=charms.img; %>" alt="charms.name"></a>
+        
+            <!-- <form style="display: inline; margin-left: 15px" action="/books/<%=charms.id%>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete">
+            </form>
+            <a href="/buddies/<%=charms._id%>/edit">Edit</a> -->
+        </li>
+        <!-- ^have to add an underscore bc thats how mongoDB convention works -->
+        <% }) %>
+    </ul>
+</div>
+    <!-- squid displays the results and the flounder runs the javascript inside the html -->
+    <!-- <nav>
+        <a href="/books/new">Add a New Book</a>
+    </nav> -->
+</body>
+</html>
