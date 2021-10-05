@@ -18,14 +18,19 @@
             <tr>
                 <td><img src="<%=charm.img%>" alt="charm.name"></td>
                 <td><%=charm.name%></td>
-                <td><%=charm.price%></td>
-                <% cartBuds.findById('') reduce by the qty bought %>
+                <td>Price: $<%=charm.price%></td>
+                <% /* %>
+                <% let want = (' ') %>
+                <% cartBuds.findById('615b61dd5624d79f4e27ce97') reduce by the qty bought %>
                 <!-- find by id and update with some extra sh*t -->
-                <input type="number" id="qty" name="qty" min="0" max="75">
-                <td><%=charm.qty%></td>
-                <form action="" method="DELETE">
+                <input type="number" id="qty" name="qty" min="0" max="<%=charm.qty%>">
+                <% */ %>
+                <td>Quantity: <%=charm.qty%></td>
+                <td>
+                <form action="" method="POST">
                     <input type="submit" value="Remove">
                 </form>
+            </td>
             </tr>
         <% }) %>
 

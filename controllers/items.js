@@ -18,9 +18,20 @@ budRouter.get('/hiddeN', (req, res) =>{
 })
 
 // DELETE - works
-budRouter.delete('/:id', (req, res) =>{
+budRouter.delete('/cart', (req, res) =>{
     res.send('bye bye');
+    // BuddyCart.findByIdAndRemove('615b92c511a9f97103706d04') 
+    //     .remove('buddies')
+    //     .then((cart) =>{
+    //     res.redirect('/valo/cart')
+    // })
+    // BuddyCart.findByIdAndRemove('615b92c511a9f97103706d04')
+    //     .remove(req.body.id)
+    //     .then((cart)=>{
+    //         res.redirect('/valo/cart')
+    //     })
 })
+
 
 // UPDATE - works
 // budRouter.put('/:id', (req, res) =>{
@@ -42,6 +53,8 @@ budRouter.post('/cart', (req, res) =>{
     // res.redirect('/valo/cart');
 
     BuddyCart.findById('615b92c511a9f97103706d04')
+    // '615b61dd5624d79f4e27ce97' -new ID?
+    // need this ID since I dont have a user interface
     .then((cart)=>{
         if(!cart.buddies.includes(req.body.id)) {
             // if its not in the cart already, add it in
@@ -84,7 +97,10 @@ budRouter.get('/cart', (req, res) => {
     .populate('buddies')
     .then((cart) =>{
         console.log(cart)
+        // console.log(cart.buddies)
         res.render('cart.ejs', {cartBuds: cart.buddies})
+        // .buddies - array created in the cart.js schema
+        // console.log(cart.buddies)
     })
 
 });
