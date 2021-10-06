@@ -1,11 +1,11 @@
 // ======== DEPENDENCIES ========
 const express = require('express');
-const budRouter = express.Router();
+const buddyRouter = express.Router();
 const Buddies = require('../models/buddy.js');
 const BuddyCart = require('../models/cart.js')
 // ======== ROUTES ========
 // INDEX - works
-budRouter.get('/', (req, res) => {
+buddyRouter.get('/', (req, res) => {
     // res.send('Hello World!');
     Buddies.find({}, (error, allBuds) =>{
         res.render('index.ejs', {buddies: allBuds});
@@ -13,12 +13,12 @@ budRouter.get('/', (req, res) => {
 });
 
 // NEW -hidden new/create page - works
-budRouter.get('/hiddeN', (req, res) =>{
+buddyRouter.get('/hiddeN', (req, res) =>{
     res.render('new.ejs');
 })
 
 // DELETE - works
-budRouter.delete('/cart', (req, res) =>{
+buddyRouter.delete('/cart', (req, res) =>{
     res.send('bye bye');
     // BuddyCart.findByIdAndRemove('615b92c511a9f97103706d04') 
     //     .remove('buddies')
@@ -34,10 +34,10 @@ budRouter.delete('/cart', (req, res) =>{
 
 
 // UPDATE - works
-// budRouter.put('/:id', (req, res) =>{
+// buddyRouter.put('/:id', (req, res) =>{
 //     res.send('where am i going?')
 // })
-budRouter.post('/cart', (req, res) =>{
+buddyRouter.post('/cart', (req, res) =>{
     // Buddies.findById(req.body.id, (err, buddy) =>{
     //     console.log(buddy);
     // })
@@ -52,10 +52,11 @@ budRouter.post('/cart', (req, res) =>{
     // })
     // res.redirect('/valo/cart');
 
-    BuddyCart.findById('615b92c511a9f97103706d04')
+    BuddyCart.findById('615b897a872f7e0d3eb44c4b')
     // '615b61dd5624d79f4e27ce97' -new ID?
     // need this ID since I dont have a user interface
     .then((cart)=>{
+        console.log('cart', cart)
         if(!cart.buddies.includes(req.body.id)) {
             // if its not in the cart already, add it in
             cart.buddies.push(req.body.id)
@@ -70,7 +71,7 @@ budRouter.post('/cart', (req, res) =>{
 });
 
 // CREATE - works
-budRouter.post('/', (req, res) =>{
+buddyRouter.post('/', (req, res) =>{
     // res.send('shhhhh')
     // console.log('bloop')
     Buddies.create(req.body, (error, createdBuddies) =>{
@@ -80,23 +81,35 @@ budRouter.post('/', (req, res) =>{
 
 
 // EDIT - works
-budRouter.get('/:id/hidE', (req, res) =>{
+buddyRouter.get('/:id/hidE', (req, res) =>{
     res.send('hidE')
 })
 
 
 // SHOW - works
-budRouter.get('/cart', (req, res) => {
+buddyRouter.get('/cart', (req, res) => {
     // res.send('Hello World!');
     // BuddyCart.findById('615b92c511a9f97103706d04', (error, allBuds) =>{
     //     .populate(buddies)
     //     console.log(allBuds)
     //     res.render('cart.ejs', {cartBuds: allBuds});
     // });
-    BuddyCart.findById('615b92c511a9f97103706d04') 
+    BuddyCart.findById('615b897a872f7e0d3eb44c4b') 
     .populate('buddies')
     .then((cart) =>{
-        console.log(cart)
+        // quantity - display quantity they want?
+        // const { buddies } = req.body;
+        // const quantity = Number.parseInt(req.body.qty)
+        // const budId = cart.buddies.findById(prod => prod.buddies.id === buddies)
+        // if (budId !== -1 && quantity <= 0) {
+        //     cart.buddies.splice(budId, 1);
+        // } else if (budId !== -1) {
+        //     cart.buddies[budId].qty = cart.buddies[budId].qty + quantity;
+        // } else if (quantity > 0) {
+        //     cart.buddies.push({ buddies: buddies, qty: qty})
+        // }
+
+        console.log('cart', cart)
         // console.log(cart.buddies)
         res.render('cart.ejs', {cartBuds: cart.buddies})
         // .buddies - array created in the cart.js schema
@@ -105,7 +118,7 @@ budRouter.get('/cart', (req, res) => {
 
 });
 
-budRouter.get('/:id', (req, res) =>{
+buddyRouter.get('/:id', (req, res) =>{
     // res.send('es info page')
     Buddies.findById(req.params.id, (err, foundBud) =>{
         // console.log(err)
@@ -116,4 +129,4 @@ budRouter.get('/:id', (req, res) =>{
 
 
 // ======== EXPORT ========
-module.exports = budRouter;
+module.exports = buddyRouter;

@@ -35,7 +35,7 @@ db.on('connected', () => console.log('mongo connected:', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 // ====== ROUTES/CONTROLLERS ======
-const buddyRouter = require('./controllers/items.js');
+const buddyRouter = require('./controllers/buddies.js');
 app.use('/valo', buddyRouter);
 
 // ====== LISTENER ======

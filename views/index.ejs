@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valorant Store</title>
-</head>
+    <head>
+        <%- include('./partials/head.ejs')%>
+    </head>
 <body>
     <div class="container">
-    <h1>Valorant Buddies</h1>
+    <h1 class="valo">Valorant Buddies</h1>
 </div>
-    <a href="/valo/cart">Cart</a>
+    <nav>
+    <a href="/valo/cart" class="cart">Cart</a>
+    </nav>
 <div class="ul-con">
     <ul>
         <% buddies.forEach(charms => { %>

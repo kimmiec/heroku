@@ -1,0 +1,26 @@
+.cart, .valo {
+    font-family: 'Cinzel Decorative', cursive;
+}
+li {
+    list-style-type: none;
+}
+
+@media screen and (max-width: 320px) { 
+    .valo {
+        font-size: 180%;
+    }
+    nav {
+        font-size: 100%;
+        text-align: center;
+    }
+    img {
+        /* min-width: 50%;
+        min-height: 50%;
+        position: relative;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%; */
+        text-align: center;
+    }
+}

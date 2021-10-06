@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valorant Store</title>
-</head>
+    <head>
+        <%- include('./partials/head.ejs')%>
+    </head>
 <body>
     <nav>
-        <a href="/valo"><h1>Valorant Buddies</h1></a>
+        <a href="/valo" class="valo"><h1>Valorant Buddies</h1></a>
+        <a href="/valo/cart" class="cart">Cart</a>
     </nav>
-
-
 
     <table>
         <% cartBuds.forEach(charm =>{ %> 
@@ -20,17 +16,16 @@
                 <td><%=charm.name%></td>
                 <td>Price: $<%=charm.price%></td>
                 <% /* %>
-                <% let want = (' ') %>
-                <% cartBuds.findById('615b61dd5624d79f4e27ce97') reduce by the qty bought %>
-                <!-- find by id and update with some extra sh*t -->
-                <input type="number" id="qty" name="qty" min="0" max="<%=charm.qty%>">
+                <% cartBuds.findById('615b897a872f7e0d3eb44c4b') reduce by the qty bought %>
                 <% */ %>
-                <td>Quantity: <%=charm.qty%></td>
+                <!-- find by id and update with some extra sh*t -->
+                
+                <td>Quantity: <input type="number" id="qty" name="qty" min="1" max="<%=charm.qty%>"></td>
                 <td>
-                <form action="" method="POST">
+                <form action="/valo/cart?_method=DELETE" method="POST">
                     <input type="submit" value="Remove">
                 </form>
-            </td>
+                </td>
             </tr>
         <% }) %>
 
