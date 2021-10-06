@@ -4,7 +4,8 @@ const buddyRouter = express.Router();
 const Buddies = require('../models/buddy.js');
 const BuddyCart = require('../models/cart.js')
 // ======== ROUTES ========
-// INDEX - works
+
+// ======== INDEX - works ========
 buddyRouter.get('/', (req, res) => {
     // res.send('Hello World!');
     Buddies.find({}, (error, allBuds) =>{
@@ -12,31 +13,76 @@ buddyRouter.get('/', (req, res) => {
     });
 });
 
-// NEW -hidden new/create page - works
+// ======== NEW -hidden new/create page - works ========
 buddyRouter.get('/hiddeN', (req, res) =>{
     res.render('new.ejs');
 })
 
-// DELETE - works
-buddyRouter.delete('/cart', (req, res) =>{
-    res.send('bye bye');
-    // BuddyCart.findByIdAndRemove('615b92c511a9f97103706d04') 
+// ======== DELETE - works ========
+buddyRouter.delete('/:id/cart', (req, res) =>{
+    // res.send('bye bye');
+    // BuddyCart.findByIdAndRemove('615b897a872f7e0d3eb44c4b') 
     //     .remove('buddies')
     //     .then((cart) =>{
     //     res.redirect('/valo/cart')
     // })
-    // BuddyCart.findByIdAndRemove('615b92c511a9f97103706d04')
-    //     .remove(req.body.id)
-    //     .then((cart)=>{
-    //         res.redirect('/valo/cart')
-    //     })
+    // Buddies.findByIdAndRemove(, (err, data) =>{
+    //     res.redirect('/valo/cart')
+    // });
+    BuddyCart.findById('615dcf0758e69d2dd3bb9aa4')
+    .then((cart) =>{
+        // console.log('cart', cart.buddies[0]._id.toString() === req.params.id)
+        cart.buddies.filter(buddy => buddy._id.toString() !== req.params.id)
+        cart.save()
+        console.log('cart', cart)
+    })
+    res.json(req.params.id)
+})
+// ======== BUDDYCART Delete All ========
+// buddyRouter.delete('/cart', (req, res) =>{
+//     // res.send('bye bye');
+//     // BuddyCart.findByIdAndRemove('615b897a872f7e0d3eb44c4b') 
+//     //     .remove('buddies')
+//     //     .then((cart) =>{
+//     //     res.redirect('/valo/cart')
+//     // })
+//     BuddyCart.findByIdAndRemove('615b897a872f7e0d3eb44c4b')
+//         .remove(req.body.id)
+//         .then((cart)=>{
+//             res.redirect('/valo/cart')
+//         })
+// })
+
+buddyRouter.delete('/cart', (req, res) =>{
+    // res.send('bye bye');
+    BuddyCart.findByIdAndRemove(req.params, (err, data) =>{
+        res.redirect('/valo')
+    })
 })
 
 
-// UPDATE - works
-// buddyRouter.put('/:id', (req, res) =>{
-//     res.send('where am i going?')
+// cartRouter.delete('/cart', async (req, res, next) =>{
+//     try {
+//         const charms = await BuddyCart.findByIdAndRemove('615b897a872f7e0d3eb44c4b')
+//         res.redirect('/valo/cart');
+//     } catch (err) {
+//         next (err)
+//     }
 // })
+
+
+
+// ======== UPDATE - works ========
+buddyRouter.put('/:id', (req, res) =>{
+    // /:id?? or just '/'?
+    // res.send('where am i going?')
+    Buddies.findByIdAndUpdate(req.params.id, req.body, {
+        new: true
+    }, (error, updateCharms) =>{
+        res.redirect('/valo/:id')
+    })
+})
+// ======== BUDDYCART Update ========
 buddyRouter.post('/cart', (req, res) =>{
     // Buddies.findById(req.body.id, (err, buddy) =>{
     //     console.log(buddy);
@@ -52,7 +98,7 @@ buddyRouter.post('/cart', (req, res) =>{
     // })
     // res.redirect('/valo/cart');
 
-    BuddyCart.findById('615b897a872f7e0d3eb44c4b')
+    BuddyCart.findById('615dcf0758e69d2dd3bb9aa4')
     // '615b61dd5624d79f4e27ce97' -new ID?
     // need this ID since I dont have a user interface
     .then((cart)=>{
@@ -64,13 +110,14 @@ buddyRouter.post('/cart', (req, res) =>{
             // now save that data bc it doesnt happen automatically
     })
     .then(() =>{
-        res.redirect('/valo/cart')
+        setTimeout(() => {res.redirect('/valo/cart')}, 100);
         // have it display after its done loading
         // need it to redirect first and then go back to the req.body.id 
     })
 });
 
-// CREATE - works
+
+// ======== CREATE - works ========
 buddyRouter.post('/', (req, res) =>{
     // res.send('shhhhh')
     // console.log('bloop')
@@ -80,13 +127,15 @@ buddyRouter.post('/', (req, res) =>{
 })
 
 
-// EDIT - works
+// ======== EDIT - works/hidden page ========
 buddyRouter.get('/:id/hidE', (req, res) =>{
-    res.send('hidE')
+    // res.send('hidE')
+    Buddies.findById(req.params.id, (error, foundBuddies) =>{
+        res.render('hidEdit.ejs', {buds: foundBuddies})
+    })
 })
 
-
-// SHOW - works
+// ======== BUDDYCART Show ========
 buddyRouter.get('/cart', (req, res) => {
     // res.send('Hello World!');
     // BuddyCart.findById('615b92c511a9f97103706d04', (error, allBuds) =>{
@@ -94,9 +143,15 @@ buddyRouter.get('/cart', (req, res) => {
     //     console.log(allBuds)
     //     res.render('cart.ejs', {cartBuds: allBuds});
     // });
-    BuddyCart.findById('615b897a872f7e0d3eb44c4b') 
+    BuddyCart.findById('615dcf0758e69d2dd3bb9aa4') 
     .populate('buddies')
     .then((cart) =>{
+        console.log('cart', cart)
+        // console.log(cart.buddies)
+        res.render('cart.ejs', {cartBuds: cart.buddies})
+        // .buddies - array created in the cart.js schema
+        // console.log(cart.buddies)
+
         // quantity - display quantity they want?
         // const { buddies } = req.body;
         // const quantity = Number.parseInt(req.body.qty)
@@ -109,15 +164,10 @@ buddyRouter.get('/cart', (req, res) => {
         //     cart.buddies.push({ buddies: buddies, qty: qty})
         // }
 
-        console.log('cart', cart)
-        // console.log(cart.buddies)
-        res.render('cart.ejs', {cartBuds: cart.buddies})
-        // .buddies - array created in the cart.js schema
-        // console.log(cart.buddies)
     })
 
 });
-
+// ======== SHOW - works ========
 buddyRouter.get('/:id', (req, res) =>{
     // res.send('es info page')
     Buddies.findById(req.params.id, (err, foundBud) =>{

@@ -10,9 +10,13 @@
     </nav>
 
     <table>
+        <form action="/valo?_method=DELETE" method="POST">
+            <input type="submit" value="I WANT IT">
+        </form>
         <% cartBuds.forEach(charm =>{ %> 
             <tr>
-                <td><img src="<%=charm.img%>" alt="charm.name"></td>
+                <!-- display img/name/desc/price/qty -->
+                <td><a href="/valo/<%=charm._id%>"><img src="<%=charm.img%>" alt="charm.name"></a></td>
                 <td><%=charm.name%></td>
                 <td>Price: $<%=charm.price%></td>
                 <% /* %>
@@ -22,7 +26,7 @@
                 
                 <td>Quantity: <input type="number" id="qty" name="qty" min="1" max="<%=charm.qty%>"></td>
                 <td>
-                <form action="/valo/cart?_method=DELETE" method="POST">
+                <form action="/valo/<%=charm._id%>/cart?_method=DELETE" method="POST">
                     <input type="submit" value="Remove">
                 </form>
                 </td>

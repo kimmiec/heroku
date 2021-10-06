@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <%- include('./partials/head.ejs')%>
+</head>
+<body>
+    <div class="title">
+    <nav>
+        <a href="/valo" class="valo"><h1>Valorant Buddies</h1></a>
+        <a href="/valo/cart" class="cart">Cart</a>
+    </nav>
+</div>
+    <div class="edit">
+        <form action="/valo/<%=buds._id%>?_method=PUT" method="POST">
+        <input type="url" name="img" value="<%=buds.img%>">
+        Name: <input type="text" name="name" value="<%=buds.name%>"> <br>
+        Description: <textarea name="description" id="desc" cols="30" rows="10"><%=buds.description%></textarea>
+        Price: <input type="text" name="price" value="$<%=buds.price%>"> <br>
+        Quantity Remaining: <input type="text" name="qty" value="<%=buds.qty%>"> <br>
+        <input type="submit" value="Make Changes">
+        </form>
+    </div>
+
+
+</body>
+</html>
