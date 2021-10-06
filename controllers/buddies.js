@@ -32,20 +32,18 @@ buddyRouter.delete('/:id/cart', (req, res) =>{
     BuddyCart.findById('615dcf0758e69d2dd3bb9aa4')
     .then((cart) =>{
         // console.log('cart', cart.buddies[0]._id.toString() === req.params.id)
-        cart.buddies.filter(buddy => buddy._id.toString() !== req.params.id)
+        cart.buddies = cart.buddies.filter(buddy => (buddy._id.toString() !== req.params.id))
         cart.save()
         console.log('cart', cart)
     })
-    res.json(req.params.id)
+    // res.json(req.params.id)
+    .then(()=>{
+        res.redirect('/valo/cart')
+    })
 })
 // ======== BUDDYCART Delete All ========
 // buddyRouter.delete('/cart', (req, res) =>{
 //     // res.send('bye bye');
-//     // BuddyCart.findByIdAndRemove('615b897a872f7e0d3eb44c4b') 
-//     //     .remove('buddies')
-//     //     .then((cart) =>{
-//     //     res.redirect('/valo/cart')
-//     // })
 //     BuddyCart.findByIdAndRemove('615b897a872f7e0d3eb44c4b')
 //         .remove(req.body.id)
 //         .then((cart)=>{
@@ -55,9 +53,14 @@ buddyRouter.delete('/:id/cart', (req, res) =>{
 
 buddyRouter.delete('/cart', (req, res) =>{
     // res.send('bye bye');
-    BuddyCart.findByIdAndRemove(req.params, (err, data) =>{
+    BuddyCart.findById('615dcf0758e69d2dd3bb9aa4')
+    .then((cart) =>{
+        cart.buddies = []
+        cart.save()
+        console.log('cart', cart)
         res.redirect('/valo')
     })
+    
 })
 
 
@@ -76,10 +79,17 @@ buddyRouter.delete('/cart', (req, res) =>{
 buddyRouter.put('/:id', (req, res) =>{
     // /:id?? or just '/'?
     // res.send('where am i going?')
+    // Buddies.findByIdAndUpdate(req.params.id, req.body, {
+    //     new: true
+    // }, (error, updateCharms) =>{
+    //     console.log(req.body)
+    //     res.redirect('/valo')
+    // })
     Buddies.findByIdAndUpdate(req.params.id, req.body, {
         new: true
-    }, (error, updateCharms) =>{
-        res.redirect('/valo/:id')
+    })
+    .then((buddy)=>{
+        res.redirect('/valo')
     })
 })
 // ======== BUDDYCART Update ========

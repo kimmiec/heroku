@@ -12,10 +12,10 @@
 </div>
     <div class="edit">
         <form action="/valo/<%=buds._id%>?_method=PUT" method="POST">
-        <input type="url" name="img" value="<%=buds.img%>">
+        <input type="image url" name="img" value="<%=buds.img%>">
         Name: <input type="text" name="name" value="<%=buds.name%>"> <br>
-        Description: <textarea name="description" id="desc" cols="30" rows="10"><%=buds.description%></textarea>
-        Price: <input type="text" name="price" value="$<%=buds.price%>"> <br>
+        Description: <input type="text" name="description" value="<%=buds.description%>"> 
+        Price: <input type="text" name="price" value="<%=buds.price%>"> <br>
         Quantity Remaining: <input type="text" name="qty" value="<%=buds.qty%>"> <br>
         <input type="submit" value="Make Changes">
         </form>
