@@ -36,7 +36,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 // ====== ROUTES/CONTROLLERS ======
 const buddyRouter = require('./controllers/buddies.js');
-app.use('/', buddyRouter);
+app.use('/valo', buddyRouter);
 // const cartRouter = require('./controllers/buddycart.js')
 // app.use('/valo', cartRouter);
 
