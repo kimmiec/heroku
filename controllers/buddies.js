@@ -7,7 +7,7 @@ const BuddyCart = require('../models/cart.js')
 ///////////////////////////////////
 // ======== INDEX - works ========
 ///////////////////////////////////
-buddyRouter.get('/`', (req, res) => {
+buddyRouter.get('/', (req, res) => {
     // res.send('Hello World!');
     Buddies.find({}, (error, allBuds) =>{
         res.render('index.ejs', {buddies: allBuds});
