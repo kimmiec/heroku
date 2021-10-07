@@ -15,7 +15,7 @@ buddyRouter.get('/', (req, res) => {
 });
 ////////////////////////////////////////////////////////
 // ======== NEW -hidden new/create page - works ========
-///////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 buddyRouter.get('/hiddeN', (req, res) =>{
     res.render('hiddenew.ejs');
 })
@@ -34,9 +34,10 @@ buddyRouter.delete('/:id/cart', (req, res) =>{
         console.log('cart', cart)
     })
     // res.json(req.params.id)
-    // .then is used to help delay the loading so it can finish processing the info 
+    // .then is used to help delay the loading so it can finish processing the info/ run code a and then b and when its done, run code c. JS - runs the longer one, finish running the shorter code and then go back to the longer code
     .then(()=>{
         res.redirect('/valo/cart')
+        // ran the redirect (shorter code) before it finished running the codes before (longer code)
     })
 })
 // ======== BUDDYCART Delete All ========

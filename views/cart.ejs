@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <%- include('./partials/head.ejs')%>
+        <link rel="stylesheet" href="/cart.css">
     </head>
 <body>
     <nav>
@@ -16,16 +17,27 @@
         <% cartBuds.forEach(charm =>{ %> 
             <tr>
                 <!-- display img/name/desc/price/qty -->
-                <td><a href="/valo/<%=charm._id%>"><img src="<%=charm.img%>" alt="charm.name"></a></td>
-                <td><%=charm.name%></td>
-                <td>Price: $<%=charm.price%></td>
+                <td class="img"><a href="/valo/<%=charm._id%>"><img src="<%=charm.img%>" alt="charm.name"></a></td>
+                <td><%=charm.name%> <br>
+                Price: $<%=charm.price%>
                 <% /* %>
                 <% cartBuds.findById('615b897a872f7e0d3eb44c4b') reduce by the qty bought %>
                 <% */ %>
                 <!-- find by id and update with some extra sh*t -->
+                <% /* %>
+                <td>Quantity: <input type="number" id="qty" name="qty" min=1 max=<%=charm.qty%>></td>
+                <% */ %>
                 
-                <td>Quantity: <input type="number" id="qty" name="qty" min="1" max="<%=charm.qty%>"></td>
-                <td>
+                <form action="/valo/cart">
+                    <label for="qty">Quantity</label>
+                    <select name="qty" id="qty">
+                        <% for(let i = 1; i <= charm.qty; i++) { %> 
+                        <option value="<%=i%>"><%=i%></option>
+                        <% } %>
+                    </select>
+                </form>
+                
+                
                 <form action="/valo/<%=charm._id%>/cart?_method=DELETE" method="POST">
                     <input type="submit" value="Remove">
                 </form>

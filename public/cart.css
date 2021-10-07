@@ -1,0 +1,35 @@
+@media screen and (max-width: 320px) { 
+    .valo {
+        font-size: 110%;
+    }
+
+    nav {
+        font-size: 100%;
+        position: relative;
+        text-align: center;
+    }
+
+    .cart {
+        position: relative;
+        text-align: center;
+    }
+    /* td {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    } */
+
+    .img {
+        min-width: 50%;
+        min-height: 50%;
+        position: relative;
+        /* display: block; */
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+        /* width: 50%; */
+    }
+    /* #pic{
+        margin: 20px 20px 20px -30px;
+        padding: 20px 0;
+    } */
+}
