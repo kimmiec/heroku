@@ -6,12 +6,12 @@
 <body>
     <div class="title">
     <nav>
-        <a href="/valo" class="valo"><h1>Valorant Buddies</h1></a>
-        <a href="/valo/cart" class="cart">Cart</a>
+        <a href="/" class="valo"><h1>Valorant Buddies</h1></a>
+        <a href="/cart" class="cart">Cart</a>
     </nav>
 </div>
     <div class="edit">
-        <form action="/valo/<%=buds._id%>?_method=PUT" method="POST">
+        <form action="/<%=buds._id%>?_method=PUT" method="POST">
         <input type="image url" name="img" value="<%=buds.img%>">
         Name: <input type="text" name="name" value="<%=buds.name%>"> <br>
         Description: <input type="text" name="description" value="<%=buds.description%>"> 

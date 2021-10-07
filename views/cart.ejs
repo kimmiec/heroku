@@ -6,18 +6,18 @@
     </head>
 <body>
     <nav>
-        <a href="/valo" class="valo"><h1>Valorant Buddies</h1></a>
-        <a href="/valo/cart" class="cart">Cart</a>
+        <a href="/" class="valo"><h1>Valorant Buddies</h1></a>
+        <a href="/cart" class="cart">Cart</a>
     </nav>
 
     <table>
-        <form action="/valo/cart?_method=DELETE" method="POST">
+        <form action="/cart?_method=DELETE" method="POST">
             <input type="submit" id="buy" value="I WANT IT">
         </form>
         <% cartBuds.forEach(charm =>{ %> 
             <tr>
                 <!-- display img/name/desc/price/qty -->
-                <td class="img"><a href="/valo/<%=charm._id%>"><img src="<%=charm.img%>" alt="charm.name"></a></td>
+                <td class="img"><a href="/<%=charm._id%>"><img src="<%=charm.img%>" alt="charm.name"></a></td>
                 <td><%=charm.name%> <br>
                 Price: $<%=charm.price%>
                 <% /* %>
@@ -28,7 +28,7 @@
                 <td>Quantity: <input type="number" id="qty" name="qty" min=1 max=<%=charm.qty%>></td>
                 <% */ %>
                 
-                <form action="/valo/cart">
+                <form action="/cart">
                     <label for="qty">Quantity</label>
                     <select name="qty" id="qty">
                         <% for(let i = 1; i <= charm.qty; i++) { %> 
@@ -38,7 +38,7 @@
                 </form>
                 
                 
-                <form action="/valo/<%=charm._id%>/cart?_method=DELETE" method="POST">
+                <form action="/<%=charm._id%>/cart?_method=DELETE" method="POST">
                     <input type="submit" value="Remove">
                 </form>
                 </td>

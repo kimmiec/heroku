@@ -9,25 +9,16 @@
     <h1 class="valo">Valorant Buddies</h1>
 </div>
     <nav>
-    <a href="/valo/cart" class="cart">Cart</a>
+    <a href="/cart" class="cart">Cart</a>
     </nav>
 <div class="ul-con">
     <ul>
         <% buddies.forEach(charms => { %>
-        <li id="pic"><a href="/valo/<%=charms._id; %>"><img src="<%=charms.img; %>" alt="charms.name"></a>
+        <li id="pic"><a href="/<%=charms._id; %>"><img src="<%=charms.img; %>" alt="charms.name"></a>
         
-            <!-- <form style="display: inline; margin-left: 15px" action="/books/<%=charms.id%>?_method=DELETE" method="POST">
-                <input type="submit" value="Delete">
-            </form>
-            <a href="/buddies/<%=charms._id%>/edit">Edit</a> -->
         </li>
-        <!-- ^have to add an underscore bc thats how mongoDB convention works -->
         <% }) %>
     </ul>
 </div>
-    <!-- squid displays the results and the flounder runs the javascript inside the html -->
-    <!-- <nav>
-        <a href="/books/new">Add a New Book</a>
-    </nav> -->
 </body>
 </html>

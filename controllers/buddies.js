@@ -16,14 +16,14 @@ buddyRouter.get('/', (req, res) => {
 ////////////////////////////////////////////////////////
 // ======== NEW -hidden new/create page - works ========
 ////////////////////////////////////////////////////////
-buddyRouter.get('/valo/hiddeN', (req, res) =>{
+buddyRouter.get('/hiddeN', (req, res) =>{
     res.render('hiddenew.ejs');
 })
 
 ///////////////////////////////////
 // ======== DELETE - works ========
 ///////////////////////////////////
-buddyRouter.delete('/valo/:id/cart', (req, res) =>{
+buddyRouter.delete('/:id/cart', (req, res) =>{
     // res.send('bye bye');
     BuddyCart.findById('615dcf0758e69d2dd3bb9aa4')
     .then((cart) =>{
@@ -36,43 +36,43 @@ buddyRouter.delete('/valo/:id/cart', (req, res) =>{
     // res.json(req.params.id)
     // .then is used to help delay the loading so it can finish processing the info/ run code a and then b and when its done, run code c. JS - runs the longer one, finish running the shorter code and then go back to the longer code
     .then(()=>{
-        res.redirect('/valo/cart')
+        res.redirect('/cart')
         // ran the redirect (shorter code) before it finished running the codes before (longer code)
     })
 })
 // ======== BUDDYCART Delete All ========
-buddyRouter.delete('/valo/cart', (req, res) =>{
+buddyRouter.delete('/cart', (req, res) =>{
     // res.send('bye bye');
     BuddyCart.findById('615dcf0758e69d2dd3bb9aa4')
     .then((cart) =>{
         cart.buddies = []
         cart.save()
         console.log('cart', cart)
-        res.redirect('/valo')
+        res.redirect('/')
     })
 })
 
 ///////////////////////////////////
 // ======== UPDATE - works ========
 ///////////////////////////////////
-buddyRouter.put('/valo/:id', (req, res) =>{
+buddyRouter.put('/:id', (req, res) =>{
     // /:id?? or just '/'?
     // res.send('where am i going?')
     // Buddies.findByIdAndUpdate(req.params.id, req.body, {
     //     new: true
     // }, (error, updateCharms) =>{
     //     console.log(req.body)
-    //     res.redirect('/valo')
+    //     res.redirect('/')
     // })
     Buddies.findByIdAndUpdate(req.params.id, req.body, {
         new: true
     })
     .then((buddy)=>{
-        res.redirect('/valo')
+        res.redirect('/')
     })
 })
 // ======== BUDDYCART Update ========
-buddyRouter.post('/valo/cart', (req, res) =>{
+buddyRouter.post('/cart', (req, res) =>{
     BuddyCart.findById('615dcf0758e69d2dd3bb9aa4')
     // '615b61dd5624d79f4e27ce97' -new ID?
     // need this ID since I dont have a user interface
@@ -87,7 +87,7 @@ buddyRouter.post('/valo/cart', (req, res) =>{
     .then(() =>{
         // have it display after its done loading
         // need it to redirect first and then go back to the req.body.id 
-        setTimeout(() => {res.redirect('/valo/cart')}, 100);
+        setTimeout(() => {res.redirect('/cart')}, 100);
         // hard code that delay for the item to appear after its done loading the info
     })
 });
@@ -95,18 +95,18 @@ buddyRouter.post('/valo/cart', (req, res) =>{
 ///////////////////////////////////
 // ======== CREATE - works ========
 ///////////////////////////////////
-buddyRouter.post('/valo', (req, res) =>{
+buddyRouter.post('/', (req, res) =>{
     // res.send('shhhhh')
     // console.log('bloop')
     Buddies.create(req.body, (error, createdBuddies) =>{
-        res.redirect('/valo');
+        res.redirect('/');
     })
 })
 
 /////////////////////////////////////////////
 // ======== EDIT - works/hidden page ========
 /////////////////////////////////////////////
-buddyRouter.get('/valo/:id/hidE', (req, res) =>{
+buddyRouter.get('/:id/hidE', (req, res) =>{
     // res.send('hidE')
     Buddies.findById(req.params.id, (error, foundBuddies) =>{
         res.render('hidEdit.ejs', {buds: foundBuddies})
@@ -116,7 +116,7 @@ buddyRouter.get('/valo/:id/hidE', (req, res) =>{
 ///////////////////////////////////
 // ======== BUDDYCART Show ========
 ///////////////////////////////////
-buddyRouter.get('/valo/cart', (req, res) => {
+buddyRouter.get('/cart', (req, res) => {
     // res.send('Hello World!');
     BuddyCart.findById('615dcf0758e69d2dd3bb9aa4') 
     .populate('buddies')
@@ -143,7 +143,7 @@ buddyRouter.get('/valo/cart', (req, res) => {
 
 });
 // ======== SHOW - works ========
-buddyRouter.get('/valo/:id', (req, res) =>{
+buddyRouter.get('/:id', (req, res) =>{
     // res.send('es info page')
     Buddies.findById(req.params.id, (err, foundBud) =>{
         // console.log(err)

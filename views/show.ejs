@@ -7,8 +7,8 @@
 <body>
     <div class="title">
     <nav>
-        <a href="/valo" class="valo"><h1>Valorant Buddies</h1></a>
-        <a href="/valo/cart" class="cart">Cart</a>
+        <a href="/" class="valo"><h1>Valorant Buddies</h1></a>
+        <a href="/cart" class="cart">Cart</a>
     </nav>
 </div>
     <div class="show">
@@ -19,7 +19,7 @@
         Quantity Remaining: <h4 class="qty"><%=buds.qty%></h4>
 
         <!-- add to cart button -->
-        <form action="/valo/cart" method="POST">
+        <form action="/cart" method="POST">
         <input type="hidden" name="id" value="<%=buds._id%>">
         <input type="submit" value="Add Buddy to Cart">
         </form>
