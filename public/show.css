@@ -1,0 +1,25 @@
+@media screen and (max-width: 320px) { 
+    .valo {
+        font-size: 110%;
+    }
+    nav {
+        text-align: center;
+    }
+    .show{
+        position: relative;
+        text-align: center;
+    }
+    img {
+        min-width: 50%;
+        min-height: 50%;
+        display: block;
+        margin: 50px auto 0;
+    }
+    h3 {
+        font-size: 150%;
+        margin-bottom: -15px;
+    }
+    .price, .qty {
+        margin-top: 5px;
+    }
+}

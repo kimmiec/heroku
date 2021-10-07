@@ -1,24 +1,7 @@
-.cart, .valo {
-    font-family: 'Cinzel Decorative', cursive;
-    text-align: center;
-    text-decoration: none;
-}
-/* nav {
-    text-align: center;
-} */
-a:visited {
-    color: black;
-}
-.cart:focus {
-    color: red;
-}
-li {
-    list-style-type: none;
-    position: relative;
-    text-align: center;
-}
 
-/* @media screen and (max-width: 320px) { 
+
+
+@media screen and (max-width: 320px) { 
     .valo {
         font-size: 180%;
     }
@@ -40,4 +23,4 @@ li {
         margin: 20px 20px 20px -30px;
         padding: 20px 0;
     }
-} */
+}
