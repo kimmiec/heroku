@@ -7,7 +7,7 @@ const BuddyCart = require('../models/cart.js')
 ///////////////////////////////////
 // ======== INDEX - works ========
 ///////////////////////////////////
-buddyRouter.get('/', (req, res) => {
+buddyRouter.get('/`', (req, res) => {
     // res.send('Hello World!');
     Buddies.find({}, (error, allBuds) =>{
         res.render('index.ejs', {buddies: allBuds});
@@ -16,14 +16,14 @@ buddyRouter.get('/', (req, res) => {
 ////////////////////////////////////////////////////////
 // ======== NEW -hidden new/create page - works ========
 ////////////////////////////////////////////////////////
-buddyRouter.get('/hiddeN', (req, res) =>{
+buddyRouter.get('/valo/hiddeN', (req, res) =>{
     res.render('hiddenew.ejs');
 })
 
 ///////////////////////////////////
 // ======== DELETE - works ========
 ///////////////////////////////////
-buddyRouter.delete('/:id/cart', (req, res) =>{
+buddyRouter.delete('/valo/:id/cart', (req, res) =>{
     // res.send('bye bye');
     BuddyCart.findById('615dcf0758e69d2dd3bb9aa4')
     .then((cart) =>{
@@ -41,7 +41,7 @@ buddyRouter.delete('/:id/cart', (req, res) =>{
     })
 })
 // ======== BUDDYCART Delete All ========
-buddyRouter.delete('/cart', (req, res) =>{
+buddyRouter.delete('/valo/cart', (req, res) =>{
     // res.send('bye bye');
     BuddyCart.findById('615dcf0758e69d2dd3bb9aa4')
     .then((cart) =>{
@@ -55,7 +55,7 @@ buddyRouter.delete('/cart', (req, res) =>{
 ///////////////////////////////////
 // ======== UPDATE - works ========
 ///////////////////////////////////
-buddyRouter.put('/:id', (req, res) =>{
+buddyRouter.put('/valo/:id', (req, res) =>{
     // /:id?? or just '/'?
     // res.send('where am i going?')
     // Buddies.findByIdAndUpdate(req.params.id, req.body, {
@@ -72,7 +72,7 @@ buddyRouter.put('/:id', (req, res) =>{
     })
 })
 // ======== BUDDYCART Update ========
-buddyRouter.post('/cart', (req, res) =>{
+buddyRouter.post('/valo/cart', (req, res) =>{
     BuddyCart.findById('615dcf0758e69d2dd3bb9aa4')
     // '615b61dd5624d79f4e27ce97' -new ID?
     // need this ID since I dont have a user interface
@@ -95,7 +95,7 @@ buddyRouter.post('/cart', (req, res) =>{
 ///////////////////////////////////
 // ======== CREATE - works ========
 ///////////////////////////////////
-buddyRouter.post('/', (req, res) =>{
+buddyRouter.post('/valo', (req, res) =>{
     // res.send('shhhhh')
     // console.log('bloop')
     Buddies.create(req.body, (error, createdBuddies) =>{
@@ -106,7 +106,7 @@ buddyRouter.post('/', (req, res) =>{
 /////////////////////////////////////////////
 // ======== EDIT - works/hidden page ========
 /////////////////////////////////////////////
-buddyRouter.get('/:id/hidE', (req, res) =>{
+buddyRouter.get('/valo/:id/hidE', (req, res) =>{
     // res.send('hidE')
     Buddies.findById(req.params.id, (error, foundBuddies) =>{
         res.render('hidEdit.ejs', {buds: foundBuddies})
@@ -116,7 +116,7 @@ buddyRouter.get('/:id/hidE', (req, res) =>{
 ///////////////////////////////////
 // ======== BUDDYCART Show ========
 ///////////////////////////////////
-buddyRouter.get('/cart', (req, res) => {
+buddyRouter.get('/valo/cart', (req, res) => {
     // res.send('Hello World!');
     BuddyCart.findById('615dcf0758e69d2dd3bb9aa4') 
     .populate('buddies')
@@ -143,7 +143,7 @@ buddyRouter.get('/cart', (req, res) => {
 
 });
 // ======== SHOW - works ========
-buddyRouter.get('/:id', (req, res) =>{
+buddyRouter.get('/valo/:id', (req, res) =>{
     // res.send('es info page')
     Buddies.findById(req.params.id, (err, foundBud) =>{
         // console.log(err)
