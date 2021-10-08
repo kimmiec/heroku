@@ -17,20 +17,20 @@ A web application where you can add and buy buddy charms.
 ## Screenshots:
 ### Wireframe
 
-![Valo Shop Wireframe](./images/Valo-Shop-Wireframe.png)
+![Valo Shop Wireframe](./images/valo-wireframe.png)
 
 ### App Display
 #### Home
 
-![Valo Shop Home](./images/Valo-Shop-Home.png)
+![Valo Shop Home](./images/valo-home.png)
 
 #### Show
 
-![Valo Shop Show](./images/Valo-Shop-Show.png)
+![Valo Shop Show](./images/valo-show.png)
 
 #### Cart
 
-![Valo Shop Cart](./images/Valo-Shop-Cart.png)
+![Valo Shop Cart](./images/valo-cart.png)
 
 ## Getting Started:
 - Click into a buddy charm that you would like to know more about~
