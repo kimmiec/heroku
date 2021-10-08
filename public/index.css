@@ -1,5 +1,34 @@
+body {
+    background: url('https://wallpapercave.com/wp/wp8480240.jpg'), rgba(254,227,203,0.75);
+    background-position: center;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
 
+img {
+    border: solid 2px rgba(162,191,172,1);
+    border-radius: 50%;
+    /* box-shadow: rgba(22,82,106,255), rgba(199,108,116,255); */
+    outline: none;
+    border-color: rgba(199,108,116,255);
+    box-shadow: 0 0 10px rgba(22,82,106,255);
+    background-color: rgba(255, 255, 255, 0.295);
+    animation: glow 1s ease-in-out infinite alternate;
+}
 
+img:hover {
+    background-color: rgba(167, 247, 216, 0.562);
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(199,108,116,255);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(22,82,106,255);
+    }
+}
 
 @media screen and (max-width: 320px) { 
     .valo {

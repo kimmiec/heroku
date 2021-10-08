@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include('./partials/head.ejs')%>
+
+<head>
+    <%- include('./partials/head.ejs')%>
         <link rel="stylesheet" href="/index.css">
-    </head>
+</head>
+
 <body>
-    <div class="container">
-    <h1 class="valo">Valorant Buddies</h1>
-</div>
-    <nav>
-    <a href="/cart" class="cart">Cart</a>
-    </nav>
-<div class="ul-con">
-    <ul>
-        <% buddies.forEach(charms => { %>
-        <li id="pic"><a href="/<%=charms._id; %>"><img src="<%=charms.img; %>" alt="charms.name"></a>
-        
-        </li>
-        <% }) %>
-    </ul>
+    <%- include('./partials/nav.ejs')%>
+    <div class="main">
+    <div class="ul-con">
+        <ul>
+            <% buddies.forEach(charms=> { %>
+                <li id="pic"><a href="/<%=charms._id; %>"><img src="<%=charms.img; %>" alt="charms.name"></a>
+
+                </li>
+                <% }) %>
+        </ul>
+    </div>
 </div>
 </body>
+
 </html>

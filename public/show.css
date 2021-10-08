@@ -1,3 +1,44 @@
+.show {
+    contain: content;
+    position: relative;
+    /* margin-top: 30px; */
+    text-align: center;
+    width: 100%;
+    font-family: 'handlee', 'lucida sans';
+    font-size: large;
+}
+
+body {
+    background: url('https://vignette.wikia.nocookie.net/valorant/images/e/e7/Loading_Screen_Ascent.png/revision/latest?cb=20200607180020'), rgba(245,173,166,0.6);
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+div #desc {
+    width: 70%;
+    /* text-align: center; */
+    margin: 0 auto;
+    background-color: rgba(111,127,148,0.95);
+}
+
+.desc {
+    color: rgba(235,209,213,255)
+}
+
+.btn {
+    background-color: rgba(236,231,225,225);
+    transition: all 600ms cubic-bezier(0.2, 0, 0, 0.8);
+    border: none;
+    font-family: 'handlee', 'lucida sans';
+    font-size: 20px;
+}
+
+.btn:hover {
+    color: rgba(196,126,126,255);
+    outline-color: rgba(231,188,185,255);
+    outline-offset: 300px;
+}
+
 @media screen and (max-width: 320px) { 
     .valo {
         font-size: 110%;

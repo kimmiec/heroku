@@ -5,23 +5,21 @@
     <link rel="stylesheet" href="/show.css">
 </head>
 <body>
-    <div class="title">
-    <nav>
-        <a href="/" class="valo"><h1>Valorant Buddies</h1></a>
-        <a href="/cart" class="cart">Cart</a>
-    </nav>
-</div>
+    <%- include('./partials/nav.ejs')%>
+    <br>
     <div class="show">
         <img src="<%=buds.img%>" alt="buds.name"><br>
         <h3><%=buds.name%></h3> <br>
+        <div id="desc">
         <h4 class="desc"><%=buds.description%></h4>
+        </div>
         Price: <h4 class="price">$<%=buds.price%></h4>
         Quantity Remaining: <h4 class="qty"><%=buds.qty%></h4>
 
         <!-- add to cart button -->
         <form action="/cart" method="POST">
         <input type="hidden" name="id" value="<%=buds._id%>">
-        <input type="submit" value="Add Buddy to Cart">
+        <input class="btn" type="submit" value="Add Buddy to Cart">
         </form>
     </div>
 

@@ -1,11 +1,50 @@
 .cart, .valo {
     font-family: 'Cinzel Decorative', cursive;
-    text-align: center;
     text-decoration: none;
 }
-/* nav {
-    text-align: center;
+.full {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    contain: content;
+    background-color: rgba(162,191,172,1);
+}
+.cart, .container {
+    width: 50%;
+    /* text-decoration: underline; */
+}
+.valo {
+    padding-right: -15px;
+}
+h1 {
+    font-size: 200%;
+}
+.cart {
+    text-align: right;
+    padding-top: 29.5px;
+    /* background-color: cadetblue; */
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+a.cart:hover {
+    color: rgba(105,125,143,255);
+}
+
+
+/* .container{
+    background-color: cornsilk;
+    text-align: right;
 } */
+nav {
+    display: block;
+}
+a.cart {
+    width: 100%;
+    object-position: bottom;
+    /* background-color: darkturquoise; */
+}
+
 a:visited {
     color: black;
 }
@@ -16,28 +55,67 @@ li {
     list-style-type: none;
     position: relative;
     text-align: center;
+    display: inline;
+    /* height: 20px; */
 }
 
-/* @media screen and (max-width: 320px) { 
-    .valo {
-        font-size: 180%;
-    }
+/* body {
+    background-color: indianred;
 
-    nav {
-        font-size: 100%;
+    background-image: linear-gradient(blue, yellow, pink);
+} */
+
+.main {
+    width: 100%;
+    /* background-color: darkslategray; */
+}
+/* .ul-con {
+
+} */
+
+#pic img {
+    width: 30%;
+    object-fit: scale-down;
+    /* background-color: floralwhite; */
+}
+
+@media screen and (max-width: 320px) { 
+    .full {
+        width: 100%;
+        height: 80px;
+        display: inline;
+        contain: content;
+        background-color: rgba(233,208,204,255);
         text-align: center;
     }
-    img {
-        min-width: 50%;
-        min-height: 50%;
-        position: relative;
+    .container {
+        width: 100%;
+        /* text-decoration: underline; */
+    }
+    h1 {
+        font-size: 25px;
+        width: 100%;
+        background-color: rgba(166,210,213,255);
+    }
+    .valo {
+        padding: none;
+    }
+    .cart {
+        text-align: center;
+        padding-top: 0;
+        /* background-color: cadetblue; */
+        font-size: 20px;
+        padding-right: 0;
+        width: 100%;
+        margin: 0 auto;
+    }
+    nav {
         display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
+        background-color: rgba(136,161,173,255);
     }
-    #pic{
-        margin: 20px 20px 20px -30px;
-        padding: 20px 0;
+    a.cart {
+        /* width: 100%; */
+        object-position: none;
+        /* background-color: darkturquoise; */
     }
-} */
+}
