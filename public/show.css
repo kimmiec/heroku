@@ -11,7 +11,8 @@
 body {
     background: url('https://vignette.wikia.nocookie.net/valorant/images/e/e7/Loading_Screen_Ascent.png/revision/latest?cb=20200607180020'), rgba(245,173,166,0.6);
     background-position: center;
-    background-blend-mode: overlay;
+    background-blend-mode: overlay;background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 div #desc {
