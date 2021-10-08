@@ -1,4 +1,4 @@
-# Valorant Store
+# Valorant Buddies
 
 A web application where you can add and buy buddy charms.
 
